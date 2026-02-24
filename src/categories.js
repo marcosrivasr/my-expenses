@@ -1,11 +1,11 @@
-import { getCategories, saveCategories } from './storage.js';
+import { getCategories, saveCategories } from "./storage.js";
 
 export function renderCategories(container) {
   const categories = getCategories();
 
   container.innerHTML = `
     <section class="card">
-      <h2>Agregar categoría</h2>
+      <h2>Agregar categorías</h2>
       <form id="category-form" class="form-row">
         <input
           type="text"
@@ -30,17 +30,17 @@ export function renderCategories(container) {
                 <li>
                   <span>${cat.name}</span>
                   <button class="btn-delete" data-id="${cat.id}">Eliminar</button>
-                </li>`
+                </li>`,
                 )
-                .join('')}
+                .join("")}
             </ul>`
       }
     </section>
   `;
 
-  container.querySelector('#category-form').addEventListener('submit', (e) => {
+  container.querySelector("#category-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    const input = container.querySelector('#category-name');
+    const input = container.querySelector("#category-name");
     const name = input.value.trim();
     if (!name) return;
 
@@ -50,8 +50,8 @@ export function renderCategories(container) {
     renderCategories(container);
   });
 
-  container.querySelectorAll('.btn-delete[data-id]').forEach((btn) => {
-    btn.addEventListener('click', () => {
+  container.querySelectorAll(".btn-delete[data-id]").forEach((btn) => {
+    btn.addEventListener("click", () => {
       const id = btn.dataset.id;
       const list = getCategories().filter((c) => c.id !== id);
       saveCategories(list);
