@@ -1,12 +1,14 @@
 import './style.css';
 import { renderCategories } from './categories.js';
 import { renderAccounts } from './accounts.js';
+import { renderTransactions } from './transactions.js';
 
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
 
 const categoriesContainer = document.getElementById('panel-categories');
 const accountsContainer = document.getElementById('panel-accounts');
+const transactionsContainer = document.getElementById('panel-transactions');
 
 function activateTab(tabId) {
   tabs.forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === tabId));
@@ -19,5 +21,6 @@ tabs.forEach((btn) => {
 
 renderCategories(categoriesContainer);
 renderAccounts(accountsContainer);
+renderTransactions(transactionsContainer);
 
 activateTab('categories');

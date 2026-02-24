@@ -1,6 +1,7 @@
 const KEYS = {
   categories: 'my-expenses-categories',
   accounts: 'my-expenses-accounts',
+  transactions: 'my-expenses-transactions',
 };
 
 export function getCategories() {
@@ -17,4 +18,12 @@ export function getAccounts() {
 
 export function saveAccounts(list) {
   localStorage.setItem(KEYS.accounts, JSON.stringify(list));
+}
+
+export function getTransactions() {
+  return JSON.parse(localStorage.getItem(KEYS.transactions) || '[]');
+}
+
+export function saveTransactions(list) {
+  localStorage.setItem(KEYS.transactions, JSON.stringify(list));
 }

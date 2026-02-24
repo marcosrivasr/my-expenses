@@ -277,3 +277,16 @@ button.btn-full:hover {
   text-align: center;
   padding: 0.5rem 0;
 }
+
+/* ── Transaction amount colors ── */
+.tx-amount { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.95rem; }
+.tx-amount.ingreso { color: #16a34a; }
+.tx-amount.gasto   { color: var(--color-danger); }
+
+/* ── Transaction item meta line ── */
+.tx-meta { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.1rem; }
+
+/* ── Transaction item layout ── */
+.tx-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.tx-desc { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
