@@ -5,7 +5,7 @@ export function renderCategories(container) {
 
   container.innerHTML = `
     <section class="card">
-      <h2>Agregar categorías</h2>
+      <h2>Agregar categoría</h2>
       <form id="category-form" class="form-row">
         <input
           type="text"
