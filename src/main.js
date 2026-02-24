@@ -1,0 +1,23 @@
+import './style.css';
+import { renderCategories } from './categories.js';
+import { renderAccounts } from './accounts.js';
+
+const tabs = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
+
+const categoriesContainer = document.getElementById('panel-categories');
+const accountsContainer = document.getElementById('panel-accounts');
+
+function activateTab(tabId) {
+  tabs.forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === tabId));
+  panels.forEach((panel) => panel.classList.toggle('active', panel.id === `panel-${tabId}`));
+}
+
+tabs.forEach((btn) => {
+  btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+});
+
+renderCategories(categoriesContainer);
+renderAccounts(accountsContainer);
+
+activateTab('categories');
