@@ -29,7 +29,6 @@ export function renderCategories(container) {
                   (cat) => `
                 <li>
                   <span>${cat.name}</span>
-                  <button class="btn-delete" data-id="${cat.id}">Editar</button>
                   <button class="btn-delete" data-id="${cat.id}">Eliminar</button>
                 </li>`,
                 )
