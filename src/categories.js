@@ -16,6 +16,7 @@ export function renderCategories(container) {
         />
         <button type="submit">Agregar</button>
       </form>
+      <p id="category-error" class="form-error" style="display:none"></p>
     </section>
 
     <section class="card">
@@ -41,10 +42,21 @@ export function renderCategories(container) {
   container.querySelector("#category-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const input = container.querySelector("#category-name");
+    const errorEl = container.querySelector("#category-error");
     const name = input.value.trim();
     if (!name) return;
 
     const list = getCategories();
+    const duplicate = list.some(
+      (c) => c.name.toLowerCase() === name.toLowerCase(),
+    );
+    if (duplicate) {
+      errorEl.textContent = `Ya existe una categoría con el nombre "${name}".`;
+      errorEl.style.display = "block";
+      return;
+    }
+
+    errorEl.style.display = "none";
     list.push({ id: crypto.randomUUID(), name });
     saveCategories(list);
     renderCategories(container);
