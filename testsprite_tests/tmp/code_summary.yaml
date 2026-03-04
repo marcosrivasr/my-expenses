@@ -1,0 +1,97 @@
+version: "2"
+type: frontend
+tech_stack:
+  - language: JavaScript (Vanilla)
+  - framework: Vite
+  - ui_library: None
+  - other: localStorage for persistence
+routes:
+  - path: /
+    file: index.html
+    auth_required: false
+    description: Single-page app with tab-based navigation (Categorias, Cuentas, Transacciones, Insights)
+features:
+  - name: Categorias Management
+    description: Create and delete expense/income categories
+    files:
+      - src/categories.js
+      - src/storage.js
+    entry_route: /
+    user_interactions:
+      - Click on "Categorias" tab
+      - Fill in category name input
+      - Click "Agregar" button to add a category
+      - See new category appear in the list
+      - Click "Eliminar" button on a category to delete it
+    api_calls: []
+    auth_required: false
+  - name: Cuentas Management
+    description: Create and delete bank accounts or credit cards with initial balance
+    files:
+      - src/accounts.js
+      - src/storage.js
+    entry_route: /
+    user_interactions:
+      - Click on "Cuentas" tab
+      - Fill in account name input
+      - Select account type (Cuenta or Tarjeta de crédito)
+      - Fill in initial balance
+      - Click "Agregar" button to add an account
+      - See new account appear in the list with balance
+      - Click "Eliminar" button to delete an account
+    api_calls: []
+    auth_required: false
+  - name: Transacciones Management
+    description: Create and delete income/expense transactions linked to categories and accounts
+    files:
+      - src/transactions.js
+      - src/storage.js
+    entry_route: /
+    user_interactions:
+      - Click on "Transacciones" tab
+      - Fill in transaction description
+      - Select transaction type (ingreso or gasto)
+      - Enter transaction amount
+      - Select a category from dropdown
+      - Select an account from dropdown
+      - Pick a date
+      - Click "Agregar" button to add the transaction
+      - See transaction in the list
+      - Click "Eliminar" button to delete a transaction
+    api_calls: []
+    auth_required: false
+  - name: Insights
+    description: View monthly summary, daily totals chart, top expenses and top income for a selected month
+    files:
+      - src/insights-ui.js
+      - src/insights.js
+      - src/storage.js
+    entry_route: /
+    user_interactions:
+      - Click on "Insights" tab
+      - Select a year and month from dropdowns
+      - See monthly summary (total income, total expenses, balance)
+      - See daily totals bar chart
+      - See top expenses list
+      - See top income list
+    api_calls: []
+    auth_required: false
+  - name: Theme Toggle
+    description: Switch between light and dark mode
+    files:
+      - src/main.js
+      - src/style.css
+    entry_route: /
+    user_interactions:
+      - Click the theme toggle button (moon/sun icon) in the header
+      - App switches between dark and light mode
+      - Preference is persisted in localStorage
+    api_calls: []
+    auth_required: false
+known_limitations:
+  - issue: No backend or remote API; all data is stored in localStorage only
+    location: src/storage.js
+    impact: Data is not synced across devices or persisted beyond browser storage
+  - issue: No authentication or user accounts
+    location: index.html
+    impact: All data is shared for any user on the same browser

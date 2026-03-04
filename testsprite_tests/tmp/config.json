@@ -1,0 +1,20 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "executionArgs": {
+    "projectName": "my-expenses",
+    "projectPath": "/Users/marcosrivas/Documents/projects/my-expenses",
+    "testIds": [
+      "TC035"
+    ],
+    "additionalInstruction": "Run only TC035 which checks that adding a category with a repeated name is prevented.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-O6jm_Ff0eWEmWGt6RYv2VFx3t0IlikQVeDPbpaF1kYzVYKuF_y1SDCmnH-P5mSv0EOxCOZjnqigNSAU7AcjGSWYw2Ug6UlAriQSMmF07fXdnevdLRZ-3WONVsDPp-YSqJIk"
+    }
+  },
+  "serverPort": 54746,
+  "proxy": "http://e44feebb-6b98-481b-8b91-a8647355a12b:emAGWU5ljtc5JDTWz8WxPvSzsMlpy5X1@tun.testsprite.com:8080"
+}
