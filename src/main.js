@@ -4,6 +4,20 @@ import { renderAccounts } from './accounts.js';
 import { renderTransactions } from './transactions.js';
 import { renderInsights } from './insights-ui.js';
 
+/* ── Theme toggle ── */
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('my-expenses-theme');
+if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+function updateToggleIcon() {
+  themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+}
+updateToggleIcon();
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('my-expenses-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+  updateToggleIcon();
+});
+
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.tab-panel');
 

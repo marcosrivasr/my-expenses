@@ -16,6 +16,8 @@ La aplicacion se organiza en 4 pestanas principales:
 - **Vite** — Bundler y servidor de desarrollo.
 - **Vanilla JS** — Sin frameworks ni librerias de UI.
 - **localStorage** — Persistencia de datos en el navegador, sin backend.
+- **Vitest** — Tests unitarios.
+- **Moneda** — MXN (Peso mexicano) formateado con `Intl.NumberFormat`.
 
 ## Estructura de archivos
 
@@ -32,7 +34,8 @@ my-expenses/
     ├── accounts.js        ← renderAccounts(container)
     ├── transactions.js    ← renderTransactions(container)
     ├── insights.js        ← Logica de calculo para el analisis
-    └── insights-ui.js     ← renderInsights(container)
+    ├── insights-ui.js     ← renderInsights(container)
+    └── insights.test.js   ← Tests unitarios para insights
 ```
 
 ## Instalacion y uso
@@ -47,6 +50,15 @@ npm run dev
 
 La aplicacion estara disponible en `http://localhost:5173`.
 
+## Scripts
+
+| Comando              | Descripcion              |
+| -------------------- | ------------------------ |
+| `npm run dev`        | Servidor de desarrollo   |
+| `npm run build`      | Build de produccion      |
+| `npm run preview`    | Preview del build        |
+| `npm run test`       | Ejecutar tests unitarios |
+
 ## Arquitectura
 
 ### Patron de modulos
@@ -59,6 +71,7 @@ Cada modulo exporta una funcion `render*(container)` que recibe el contenedor DO
 |---|---|
 | `my-expenses-categories` | Lista de categorias |
 | `my-expenses-accounts` | Lista de cuentas con saldo |
+| `my-expenses-transactions` | Lista de transacciones |
 
 ### Identificadores
 
@@ -66,10 +79,4 @@ Se generan IDs unicos con `crypto.randomUUID()`.
 
 ### Formato de moneda
 
-Los montos se formatean con el estandar mexicano:
-
-```js
-new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' })
-```
-
-Ejemplo de salida: `$1,234.56`.
+Los montos se formatean con `Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' })` → `$1,234.56`.
